@@ -1,5 +1,3 @@
-
-
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.Map;
@@ -42,9 +40,7 @@ public class Solution {
         while (!previousHeights.isEmpty() && previousHeights.peek() < height[i]) {
           int h = previousHeights.pop();
           if (frequencyPerHeight.containsKey(h)) {
-            numberOfValidRoutes =
-                numberOfValidRoutes
-                    + (long) frequencyPerHeight.get(h) * (long) (frequencyPerHeight.remove(h) - 1);
+            numberOfValidRoutes += (long) frequencyPerHeight.get(h) * (long) (frequencyPerHeight.remove(h) - 1);
           }
         }
 
@@ -55,15 +51,12 @@ public class Solution {
 
     // Calculate valid routes for any heights not removed during the iteration.
     for (int h : frequencyPerHeight.keySet()) {
-      numberOfValidRoutes =
-          numberOfValidRoutes
-              + (long) (frequencyPerHeight.get(h) * (long) (frequencyPerHeight.get(h) - 1));
+      numberOfValidRoutes += (long) (frequencyPerHeight.get(h) * (long) (frequencyPerHeight.get(h) - 1));
     }
     return numberOfValidRoutes;
   }
 
-  private static void fillMap_frequencyPerHeight(
-      int height, Map<Integer, Integer> frequencyPerHeight) {
+  private static void fillMap_frequencyPerHeight(int height, Map<Integer, Integer> frequencyPerHeight) {
     if (!frequencyPerHeight.containsKey(height)) {
       frequencyPerHeight.put(height, 1);
     } else {
